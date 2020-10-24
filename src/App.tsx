@@ -1,19 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 import './App.css';
+import ArticlesView from "./views/Articles/Articles.view";
+import ArticleView from "./views/Articles/Article.view";
 
-import { useQuery, gql } from '@apollo/client';
-const NEWS_LIST = gql`
-    query getNewsList {
-        newsList(skip: 5, limit: 15){totalRows, rows {id, title}}
-    }
-`
 
 export default function App() {
-    const { loading, error, data } = useQuery(NEWS_LIST);
 
   return (
     <div className="App">
-      Stuff
+        <Router>
+            <Switch>
+                <Route path="/article" component={ArticleView} />
+                <Route path="/" component={ArticlesView} />
+            </Switch>
+        </Router>
     </div>
   );
 }
