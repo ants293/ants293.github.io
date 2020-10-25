@@ -2,8 +2,8 @@ import { IArticle } from "../articles/article";
 
 export interface INewsList {
   newsList: {
+    rows: IArticle[];
     totalRows: number;
-    rows: [IArticle];
   };
 }
 
