@@ -1,10 +1,9 @@
 import React, { ReactElement } from "react";
-import HeaderTitle from "./HeaderTitle/HeaderTitle";
 
-export default function Header(): ReactElement {
-  return (
-    <div className="header">
-      <HeaderTitle />
-    </div>
-  );
+interface Props {
+  children: ReactElement;
+}
+
+export default function Header({ children }: Props): ReactElement {
+  return <div className="header">{children}</div>;
 }
