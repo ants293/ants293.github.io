@@ -1,7 +1,7 @@
 .header {
   margin-bottom: 20px;
   height: 60px;
-  background-color: $secondaryColor;
+  background-color: $primaryColor;
   color: #fff;
 
   .header__content {
@@ -20,6 +20,13 @@
       display: inline-block;
       color: #fff;
       text-decoration: none;
+      transition: color ease .3s;
+
+      &:focus,
+      &:hover,
+      &:active {
+        color: $secondaryColor;
+      }
     }
   }
 

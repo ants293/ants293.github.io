@@ -3,6 +3,7 @@ import React, { ReactElement } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import ArticlesView from "../components/views/Articles/Articles.view";
 import ArticleView from "../components/views/Articles/Article.view";
+import NotFoundView from "../components/views/NotFound/NotFound.view";
 
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>
@@ -14,6 +15,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
       <Switch location={location}>
         <Route exact path="/" component={ArticlesView} />
         <Route path="/article/:id" component={ArticleView} />
+        <Route component={NotFoundView} />
       </Switch>
     </CSSTransition>
   </TransitionGroup>
