@@ -1,9 +1,18 @@
 import React, { ReactElement } from "react";
+import clsx from "clsx";
 
 interface Props {
   children: ReactElement;
+  classes?: string;
 }
 
-export default function HeaderInnerContent({ children }: Props): ReactElement {
-  return <div className="header__inner">{children}</div>;
+export default function HeaderInnerContent({
+  children,
+  classes,
+}: Props): ReactElement {
+  return <div className={clsx(["header__content", classes])}>{children}</div>;
 }
+
+HeaderInnerContent.defaultProps = {
+  classes: "",
+};

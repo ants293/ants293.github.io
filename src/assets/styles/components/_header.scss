@@ -1,15 +1,23 @@
 .header {
+  margin-bottom: 20px;
+  height: 60px;
   background-color: $secondaryColor;
   color: #fff;
 
+  .header__content {
+    height: 100%;
+  }
+
   .header__inner {
     display: flex;
+    height: 100%;
     width: 100%;
     padding: 15px;
     justify-content: space-between;
     align-items: center;
 
     a {
+      display: inline-block;
       color: #fff;
       text-decoration: none;
     }

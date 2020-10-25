@@ -2,6 +2,10 @@
   padding-left: $grid-padding;
   padding-right: $grid-padding;
 
+  .article-list__item {
+    text-decoration: none;
+  }
+
   .article-list__img {
 
     img {
@@ -15,5 +19,6 @@
   .article-list__title {
     margin-top: 5px;
     margin-bottom: 10px;
+    font-size: 1.8rem;
   }
 }

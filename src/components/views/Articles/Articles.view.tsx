@@ -19,7 +19,6 @@ export default function ArticlesView(): ReactElement {
   return (
     <Wrapper>
       <div>
-        is a list
         <ArticlesList loading={loading} data={data} fetchMore={fetchMore} />
       </div>
     </Wrapper>

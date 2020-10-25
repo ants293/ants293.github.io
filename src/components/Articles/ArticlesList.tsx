@@ -77,7 +77,7 @@ export default function ArticlesList({
           </div>
         </InfiniteScroll>
       ) : (
-        "Load pls"
+        <div>load</div>
       )}
     </div>
   );
