@@ -1,26 +1,33 @@
 import React, { ReactElement, useState } from "react";
-import { useQuery } from "@apollo/client";
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteScroll from "react-infinite-scroller";
 import { IArticle } from "../../interfaces/articles/article";
-import { GET_ARTICLES_LIST } from "../../apollo/articles/articles.requests";
+import {
+  INewsList,
+  IRequestMoreResults,
+} from "../../interfaces/apolloResponses/newsList";
 
-export default function ArticlesList(): ReactElement {
-  const { loading, error, data: articlesList, fetchMore } = useQuery(
-    GET_ARTICLES_LIST,
-    {
-      variables: {
-        limit: 10,
-        skip: 0,
-      },
-    }
-  );
+interface Props {
+  loading?: boolean;
+  data?: any;
+  fetchMore?: any;
+}
 
-  function addStuff() {
+export default function ArticlesList({
+  loading,
+  data,
+  fetchMore,
+}: Props): ReactElement {
+  const { newsList } = data;
+
+  function requestMoreRows() {
     fetchMore({
       variables: {
-        skip: articlesList.newsList.rows.length + 5,
+        skip: newsList.rows.length + 5,
       },
-      updateQuery: (prev: any, { fetchMoreResult }) => {
+      updateQuery: (
+        prev: INewsList,
+        { fetchMoreResult }: IRequestMoreResults
+      ) => {
         if (!fetchMoreResult) return prev;
         return {
           ...prev,
@@ -35,27 +42,48 @@ export default function ArticlesList(): ReactElement {
 
   return (
     <div className="article-list">
-      <InfiniteScroll
-        dataLength={articlesList ? articlesList.newsList?.rows.length : 0}
-        next={addStuff}
-        hasMore={articlesList?.totalRows === articlesList.newsList?.rows.length}
-        loader={<h4>Loading...</h4>}
-      >
-        <div className="f-grid">
-          {articlesList?.newsList?.rows.map(
-            (article: IArticle): ReactElement => (
-              <div key={article.id} className="f-grid-col-4">
-                <div className="article-list__item">
-                  <div className="article-list__img">
-                    <img src={article.img} alt={article.title} />
+      {!loading ? (
+        <InfiniteScroll
+          loadMore={requestMoreRows}
+          hasMore={!(newsList.rows.length === newsList.totalRows)}
+          loader={<h4>Loading...</h4>}
+        >
+          <div className="f-grid">
+            {newsList.rows.map(
+              (article: IArticle, index: number): ReactElement => (
+                <div
+                  key={article.id}
+                  className={
+                    index === 0
+                      ? "f-grid-col-12 f-grid-col-lg-12"
+                      : "f-grid-col-6 f-grid-col-lg-4"
+                  }
+                >
+                  <div className="article-list__item">
+                    <div className="article-list__img">
+                      <img src={article.img} alt={article.title} />
+                    </div>
+                    <h2 className="article-list__title">{article.title}</h2>
                   </div>
-                  <h2 className="article-list__title">{article.title}</h2>
                 </div>
-              </div>
-            )
-          )}
-        </div>
-      </InfiniteScroll>
+              )
+            )}
+          </div>
+        </InfiniteScroll>
+      ) : (
+        "Load pls"
+      )}
     </div>
   );
 }
+
+ArticlesList.defaultProps = {
+  loading: false,
+  data: {
+    newsList: {
+      totalRows: 999,
+      rows: [],
+    },
+  },
+  fetchMore: () => {},
+};
