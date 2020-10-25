@@ -1,0 +1,24 @@
+.slide-righttoleft-exit {
+  transition: transform 500ms ease-out;
+}
+
+.slide-righttoleft-enter {
+  transform: translateX(100%);
+}
+
+.slide-righttoleft-enter.slide-righttoleft-enter-active {
+  transform: translateX(0%);
+}
+
+.slide-righttoleft-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  transform: translateX(0%);
+}
+
+.slide-righttoleft-exit-active {
+  transform: translateX(-100%);
+}
