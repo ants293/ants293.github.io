@@ -1,0 +1,117 @@
+/* GRID SYSTEM */
+/** ========================================================================== */
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$breakPoints: (
+  "sm": $sm,
+  "md": $md,
+  "lg": $lg,
+  "xl": $xl
+);
+
+$mainBreakPoint: $md;
+$gridSize: 12;
+
+/* Grid container */
+/* --------------------------------------------------------------------------- */
+
+.container {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  max-width: 950px;
+  z-index: 1;
+}
+
+.container:before,
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container-fluid {
+  display: inline-block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $grid-padding;
+  padding-left: $grid-padding;
+}
+
+@media(min-width: 768px) {
+  .container-fluid {
+    padding-right: $grid-padding;
+    padding-left: $grid-padding;
+  }
+}
+
+@media(min-width: 1200px) {
+  .container-fluid {
+    padding-right: $grid-padding;
+    padding-left: $grid-padding;
+  }
+}
+
+/* GRID HANDLING */
+/** ========================================================================== */
+
+.f-grid {
+  display: flex;
+  margin-right: -$grid-padding;
+  margin-left: -$grid-padding;
+}
+
+.f-grid-col {
+  flex-grow: 1;
+  padding-right: $grid-padding;
+  padding-left: $grid-padding;
+}
+
+@for $i from 1 through $gridSize {
+  .f-grid-col-#{$i} {
+    flex: 0 0 ($i / $gridSize) * 100%;
+    flex-grow: 1;
+    padding-right: $grid-padding;
+    padding-left: $grid-padding;
+    max-width: ($i / $gridSize) * 100%;
+  }
+}
+
+@each $pointName, $inWidth in $breakPoints {
+  @media(min-width: $inWidth) {
+    .f-grid-#{$pointName} {
+      display: flex!important;
+      margin-right: -$grid-padding;
+      margin-left: -$grid-padding;
+    }
+    .f-grid-col-#{$pointName} {
+      flex-grow: 1;
+      padding-right: $grid-padding;
+      padding-left: $grid-padding;
+    }
+
+    @for $i from 1 through $gridSize {
+      .f-grid-col-#{$pointName}-#{$i} {
+        flex: 0 0 ($i / $gridSize) * 100%;
+        flex-grow: 1;
+        padding-right: $grid-padding;
+        padding-left: $grid-padding;
+        max-width: ($i / $gridSize) * 100%;
+      }
+    }
+  }
+}
+
+.clear:before,
+.clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}

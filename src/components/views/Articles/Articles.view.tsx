@@ -37,7 +37,7 @@ export default function ArticlesView(): ReactElement {
       <div className="article-list">
         {articlesList?.newsList?.rows.map(
           (article: IArticle): ReactElement => (
-            <div className="article-list__item">
+            <div className="article-list__item" key={article.id}>
               <img src={article.img} alt={article.title} />
               <h2>{article.title}</h2>
             </div>
