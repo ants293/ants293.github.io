@@ -7,6 +7,7 @@ export const GET_ARTICLES_LIST = gql`
       rows {
         id
         title
+        img
       }
     }
   }

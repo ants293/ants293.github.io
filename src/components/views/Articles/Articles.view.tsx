@@ -1,22 +1,23 @@
-import React, { useState } from "react";
-import { useQuery, gql } from "@apollo/client";
+import React, { ReactElement, useState } from "react";
+import { useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { GET_ARTICLES_LIST } from "../../../apollo/articles/articles.requests";
+import { IArticle } from "../../../interfaces/articles/article";
 
-export default function ArticlesView() {
+export default function ArticlesView(): ReactElement {
   const [articlesPagination, setArticlesPagination] = useState({
     skip: 0,
-    limit: 5,
+    limit: 10,
   });
 
-  const { loading, error, data } = useQuery(GET_ARTICLES_LIST, {
+  const { loading, error, data: articlesList } = useQuery(GET_ARTICLES_LIST, {
     variables: {
       skip: articlesPagination.skip,
       limit: articlesPagination.limit,
     },
   });
 
-  console.log(error, data);
+  console.log(articlesList);
 
   return (
     <div>
@@ -27,12 +28,22 @@ export default function ArticlesView() {
         onClick={() => {
           setArticlesPagination({
             ...articlesPagination,
-            skip: articlesPagination.skip + 5,
+            skip: articlesPagination.skip + 10,
           });
         }}
       >
         update pls
       </button>
+      <div className="article-list">
+        {articlesList?.newsList?.rows.map(
+          (article: IArticle): ReactElement => (
+            <div className="article-list__item">
+              <img src={article.img} alt={article.title} />
+              <h2>{article.title}</h2>
+            </div>
+          )
+        )}
+      </div>
     </div>
   );
 }
