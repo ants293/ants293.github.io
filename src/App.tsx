@@ -6,8 +6,8 @@ import {
     Link
 } from "react-router-dom";
 import './App.css';
-import ArticlesView from "./views/Articles/Articles.view";
-import ArticleView from "./views/Articles/Article.view";
+import ArticleView from "./components/views/Articles/Article.view";
+import ArticlesView from "./components/views/Articles/Articles.view";
 
 
 export default function App() {
