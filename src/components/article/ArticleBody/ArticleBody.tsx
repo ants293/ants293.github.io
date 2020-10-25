@@ -13,7 +13,7 @@ export default function ArticleBody({ loading, data }: Props): ReactElement {
         <div>Loading</div>
       ) : (
         <>
-          <div className="single-article__title">{newsItem.title}</div>
+          <h1 className="single-article__title">{newsItem.title}</h1>
           <div className="single-article__img">
             <img src={newsItem.img} alt={newsItem.title} />
           </div>

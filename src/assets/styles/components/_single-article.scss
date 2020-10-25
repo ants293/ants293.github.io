@@ -1,0 +1,38 @@
+.single-article {
+
+  .single-article__content {
+    font-size: $articleContentFontSize - $sizeReductionVariable;
+    line-height: 1.8rem - $sizeReductionVariable;
+    @media(min-width: $md) {
+      font-size: $articleContentFontSize;
+      line-height: 1.8rem;
+    }
+  }
+
+  .single-article__title {
+    text-align: left;
+
+    @media(min-width: $md) {
+      text-align: center;
+    }
+  }
+
+  .single-article__img {
+    float: none;
+    width: 100%;
+
+    @media(min-width: $md) {
+      float: left;
+      max-width: 500px;
+      margin: 0 15px 15px 0;
+    }
+  }
+
+  img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+}
+

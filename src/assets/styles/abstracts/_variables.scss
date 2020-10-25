@@ -1,6 +1,25 @@
+$rootFontSize: 16px;
+
+$h1FontSize: 2.5rem;
+$h2FontSize: 2.1rem;
+$h3FontSize: 1.8rem;
+$articleContentFontSize: 1.6rem;
+
 $grid-padding: 10px;
 
-$primaryColor: #D62246;
+$primaryColor: #00272B;
 $secondaryColor: #00272B;
 
 $primaryFontColor: $secondaryColor;
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+$breakPoints: (
+  "sm": $sm,
+  "md": $md,
+  "lg": $lg,
+  "xl": $xl
+);

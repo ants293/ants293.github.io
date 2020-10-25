@@ -1,3 +1,27 @@
 * {
   box-sizing: border-box;
 }
+
+html {
+  font-size: $rootFontSize;
+}
+
+h1,
+h2,
+h3 {
+  color: $primaryColor;
+}
+
+$sizeReductionVariable: 0.3;
+
+h1 {font-size: $h1FontSize - $sizeReductionVariable}
+h2 {font-size: $h2FontSize - $sizeReductionVariable}
+h3 {font-size: $h3FontSize - $sizeReductionVariable}
+
+@media(min-width: $md) {
+  h1 {font-size: $h1FontSize}
+  h2 {font-size: $h2FontSize}
+  h3 {font-size: $h3FontSize}
+}
+
+

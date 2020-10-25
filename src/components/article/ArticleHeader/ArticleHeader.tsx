@@ -32,9 +32,7 @@ export default function ArticleHeader({ loading, data }: Props): ReactElement {
             </div>
           </HeaderInnerContent>
         </Header>
-      ) : (
-        <div>Loading</div>
-      )}
+      ) : null}
     </>
   );
 }
