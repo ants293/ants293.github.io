@@ -1,11 +1,11 @@
 import React, { ReactElement } from "react";
 import "./App.scss";
-import Router from "./router/router";
+import RootRouter from "./router/router";
 
 export default function App(): ReactElement {
   return (
     <div className="App">
-      <Router />
+      <RootRouter />
     </div>
   );
 }

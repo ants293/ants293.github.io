@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
+import { Link } from "react-router-dom";
 import { IArticle } from "../../interfaces/articles/article";
 import {
   INewsList,
@@ -59,12 +60,17 @@ export default function ArticlesList({
                       : "f-grid-col-6 f-grid-col-lg-4"
                   }
                 >
-                  <div className="article-list__item">
+                  <Link
+                    className="article-list__item"
+                    to={{
+                      pathname: `/article/${encodeURI(article.id)}`,
+                    }}
+                  >
                     <div className="article-list__img">
                       <img src={article.img} alt={article.title} />
                     </div>
                     <h2 className="article-list__title">{article.title}</h2>
-                  </div>
+                  </Link>
                 </div>
               )
             )}

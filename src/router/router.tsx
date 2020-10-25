@@ -1,18 +1,14 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React, { ReactElement } from "react";
-import { routeMap } from "./routeMap";
+import ArticlesView from "../components/views/Articles/Articles.view";
+import ArticleView from "../components/views/Articles/Article.view";
 
-export default function Router(): ReactElement {
+export default function RootRouter(): ReactElement {
   return (
     <BrowserRouter>
       <Switch>
-        {routeMap.map((routeItem) => (
-          <Route
-            key={routeItem.key}
-            path={routeItem.path}
-            component={routeItem.component}
-          />
-        ))}
+        <Route exact path="/" component={ArticlesView} />
+        <Route path="/article/:id" component={ArticleView} />
       </Switch>
     </BrowserRouter>
   );
