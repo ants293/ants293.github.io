@@ -6,10 +6,10 @@ import Wrapper from "../components/shared/Wrapper/Wrapper";
 export const routeMap: Array<IRoutemapItem> = [
   {
     path: "/article",
-    component: () => Wrapper(ArticleView()),
+    component: ArticleView,
   },
   {
     path: "/",
-    component: () => Wrapper(ArticlesView()),
+    component: ArticlesView,
   },
 ];
