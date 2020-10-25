@@ -1,4 +1,5 @@
 import React, { ReactElement } from "react";
+import GlobalLoader from "../../global/GlobalLoader/GlobalLoader";
 
 interface Props {
   loading?: boolean;
@@ -10,7 +11,7 @@ export default function ArticleBody({ loading, data }: Props): ReactElement {
   return (
     <div className="single-article">
       {loading ? (
-        <div>Loading</div>
+        <GlobalLoader />
       ) : (
         <>
           <h1 className="single-article__title">{newsItem.title}</h1>

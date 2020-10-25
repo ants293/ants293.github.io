@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Link } from "react-router-dom";
 import { IArticle } from "../../interfaces/articles/article";
@@ -6,6 +6,8 @@ import {
   INewsList,
   IRequestMoreResults,
 } from "../../interfaces/apolloResponses/newsList";
+import LoadingIcon from "../shared/utility/LoadingIcon/LoadingIcon";
+import GlobalLoader from "../global/GlobalLoader/GlobalLoader";
 
 interface Props {
   loading?: boolean;
@@ -23,7 +25,7 @@ export default function ArticlesList({
   function requestMoreRows() {
     fetchMore({
       variables: {
-        skip: newsList.rows.length + 5,
+        skip: newsList.rows.length,
       },
       updateQuery: (
         prev: INewsList,
@@ -47,7 +49,7 @@ export default function ArticlesList({
         <InfiniteScroll
           loadMore={requestMoreRows}
           hasMore={!(newsList.rows.length === newsList.totalRows)}
-          loader={<h4>Loading...</h4>}
+          loader={<div className="text-align-center">{LoadingIcon()}</div>}
         >
           <div className="f-grid">
             {newsList.rows.map(
@@ -77,7 +79,7 @@ export default function ArticlesList({
           </div>
         </InfiniteScroll>
       ) : (
-        <div>load</div>
+        <GlobalLoader />
       )}
     </div>
   );
