@@ -1,8 +1,10 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function ArticleView() {
-    return (
-        <div>single article<Link to={'/'}>button</Link></div>
-    )
+  return (
+    <div>
+      single article<Link to="/">button</Link>
+    </div>
+  );
 }
