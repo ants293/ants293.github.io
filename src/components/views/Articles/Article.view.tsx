@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import Wrapper from "../../shared/Wrapper/Wrapper";
 import { GET_SINGLE_ARTICLE_INFO } from "../../../apollo/requests/article.requests";
 import ArticleBody from "../../article/ArticleBody/ArticleBody";
+import ArticleHeader from "../../article/ArticleHeader/ArticleHeader";
 
 interface MatchParams {
   id: string;
@@ -23,7 +24,9 @@ export default function ArticleView({ match }: MatchProps): ReactElement {
   }
 
   return (
-    <Wrapper>
+    <Wrapper
+      headerComponent={() => <ArticleHeader loading={loading} data={data} />}
+    >
       <ArticleBody loading={loading} data={data} />
     </Wrapper>
   );
