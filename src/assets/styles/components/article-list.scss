@@ -1,0 +1,17 @@
+.article-list {
+
+  .article-list__img {
+
+    img {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
+
+  .article-list__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+}

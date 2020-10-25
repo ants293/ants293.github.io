@@ -35,14 +35,20 @@ export default function ArticlesView(): ReactElement {
           update pls
         </button>
         <div className="article-list">
-          {articlesList?.newsList?.rows.map(
-            (article: IArticle): ReactElement => (
-              <div className="article-list__item" key={article.id}>
-                <img src={article.img} alt={article.title} />
-                <h2>{article.title}</h2>
-              </div>
-            )
-          )}
+          <div className="f-grid">
+            {articlesList?.newsList?.rows.map(
+              (article: IArticle): ReactElement => (
+                <div key={article.id} className="f-grid-col-4">
+                  <div className="article-list__item">
+                    <div className="article-list__img">
+                      <img src={article.img} alt={article.title} />
+                    </div>
+                    <h2 className="article-list__title">{article.title}</h2>
+                  </div>
+                </div>
+              )
+            )}
+          </div>
         </div>
       </div>
     </Wrapper>

@@ -7,7 +7,11 @@ export default function Router(): ReactElement {
     <BrowserRouter>
       <Switch>
         {routeMap.map((routeItem) => (
-          <Route path={routeItem.path} component={routeItem.component} />
+          <Route
+            key={routeItem.key}
+            path={routeItem.path}
+            component={routeItem.component}
+          />
         ))}
       </Switch>
     </BrowserRouter>

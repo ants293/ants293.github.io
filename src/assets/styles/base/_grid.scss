@@ -66,6 +66,7 @@ $gridSize: 12;
   display: flex;
   margin-right: -$grid-padding;
   margin-left: -$grid-padding;
+  flex-wrap: wrap;
 }
 
 .f-grid-col {
