@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { useQuery } from "@apollo/client";
 import Wrapper from "../../shared/Wrapper/Wrapper";
 import ArticlesList from "../../Articles/ArticlesList";
-import { GET_ARTICLES_LIST } from "../../../apollo/articles/articles.requests";
+import { GET_ARTICLES_LIST } from "../../../apollo/requests/articles.requests";
 
 export default function ArticlesView(): ReactElement {
   const { loading, error, data, fetchMore } = useQuery(GET_ARTICLES_LIST, {
@@ -11,6 +11,10 @@ export default function ArticlesView(): ReactElement {
       skip: 0,
     },
   });
+
+  if (error) {
+    console.error(error);
+  }
 
   return (
     <Wrapper>

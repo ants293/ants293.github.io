@@ -1,20 +1,28 @@
 import React, { ReactElement } from "react";
-import { Link } from "react-router-dom";
+import { RouteComponentProps } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 import Wrapper from "../../shared/Wrapper/Wrapper";
+import { GET_SINGLE_ARTICLE_INFO } from "../../../apollo/requests/article.requests";
 
-interface Props {
-  location?: any;
+interface MatchParams {
+  id: string;
 }
 
-export default function ArticleView({ location }: Props): ReactElement {
-  console.log("location", location);
+type MatchProps = RouteComponentProps<MatchParams>;
+
+export default function ArticleView({ match }: MatchProps): ReactElement {
+  const { loading, error, data, fetchMore } = useQuery(
+    GET_SINGLE_ARTICLE_INFO,
+    {
+      variables: {
+        id: match.params.id,
+      },
+    }
+  );
+
   return (
     <Wrapper>
       <div>single article</div>
     </Wrapper>
   );
 }
-
-ArticleView.defaultProps = {
-  location: {},
-};
