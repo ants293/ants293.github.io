@@ -13,7 +13,10 @@ interface Props {
   data?: any;
 }
 
-export default function ArticleHeader({ loading, data }: Props): ReactElement {
+export default function ArticleHeader({
+  loading,
+  data = { newsItem: {} },
+}: Props): ReactElement {
   const { newsItem } = data;
 
   return (

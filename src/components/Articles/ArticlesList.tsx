@@ -2,24 +2,29 @@ import React, { ReactElement } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import { Link } from "react-router-dom";
 import { IArticle } from "../../interfaces/articles/article";
+import LoadingIcon from "../shared/utility/LoadingIcon/LoadingIcon";
+import GlobalLoader from "../global/GlobalLoader/GlobalLoader";
 import {
   INewsList,
   IRequestMoreResults,
-} from "../../interfaces/apolloResponses/newsList";
-import LoadingIcon from "../shared/utility/LoadingIcon/LoadingIcon";
-import GlobalLoader from "../global/GlobalLoader/GlobalLoader";
+} from "../../interfaces/articles/articles";
 
 interface Props {
   loading?: boolean;
-  data?: any;
+  data?: INewsList;
   fetchMore?: any;
 }
 
 export default function ArticlesList({
-  loading,
-  data,
-  fetchMore,
-}: Props): ReactElement {
+  loading = false,
+  data = {
+    newsList: {
+      totalRows: 999,
+      rows: [],
+    },
+  },
+  fetchMore = () => {},
+}: Props): ReactElement<Props> {
   const { newsList } = data;
 
   function requestMoreRows() {
