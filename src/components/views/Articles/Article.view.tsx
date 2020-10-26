@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import Wrapper from "../../shared/Wrapper/Wrapper";
@@ -13,6 +13,10 @@ interface MatchParams {
 type MatchProps = RouteComponentProps<MatchParams>;
 
 export default function ArticleView({ match }: MatchProps): ReactElement {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { loading, error, data } = useQuery(GET_SINGLE_ARTICLE_INFO, {
     variables: {
       id: match.params.id,

@@ -25,7 +25,7 @@ export default function ArticleHeader({ loading, data }: Props): ReactElement {
               <Link to="/">
                 <FontAwesomeIcon icon={faChevronLeft} />
               </Link>
-              <div className="header__title">The title</div>
+              <div className="header__title">News reader</div>
               <a href={newsItem.url} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon icon={faExternalLinkAlt} />
               </a>
