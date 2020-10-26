@@ -23,7 +23,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
 
 export default function RootRouter(): ReactElement {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <AnimatedSwitch />
     </BrowserRouter>
   );
