@@ -5,3 +5,10 @@ export interface IArticle {
   url: string;
   img: string;
 }
+
+export interface IComment {
+  id: string;
+  content: string;
+  email: string;
+  createdDate: number;
+}

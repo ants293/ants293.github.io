@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import GlobalLoader from "../../global/GlobalLoader/GlobalLoader";
+import ArticleComments from "../ArticleComments/ArticleComments";
 
 interface Props {
   loading?: boolean;
@@ -19,6 +20,9 @@ export default function ArticleBody({ loading, data }: Props): ReactElement {
             <img src={newsItem.img} alt={newsItem.title} />
           </div>
           <div className="single-article__content">{newsItem.content}</div>
+          <div className="single-article__comments clear">
+            <ArticleComments comments={newsItem.comments} />
+          </div>
         </>
       )}
     </div>
