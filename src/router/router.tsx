@@ -15,7 +15,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
       <Switch location={location}>
         <Route exact path="/" component={ArticlesView} />
         <Route path="/article/:id" component={ArticleView} />
-        <Route component={NotFoundView} />
+        <Route path="*" component={NotFoundView} />
       </Switch>
     </CSSTransition>
   </TransitionGroup>
