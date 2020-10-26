@@ -1,3 +1,8 @@
+## Requirements
+
+Node >= 14.6.0
+npm >= 6.14.8
+
 ## Available Scripts
 
 In the project directory, you can run:
